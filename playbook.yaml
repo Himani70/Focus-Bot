@@ -1,0 +1,125 @@
+---
+- hosts: aws
+  vars_files:
+      - config.yaml
+
+  tasks:
+
+   - name: Install node js
+     apt:
+      name: nodejs-legacy
+      update_cache: yes
+      state: latest
+      install_recommends: yes
+     become: yes
+
+   - name: Install npm
+     become: yes
+     apt:
+      name: npm
+      update_cache: yes
+      state: latest
+      install_recommends: yes
+
+
+   - name: Install Forever
+     become: yes
+     npm:
+       name: forever
+       global: yes
+       state: latest
+
+   - name: Install python
+     apt:
+      name: python
+      update_cache: yes
+      state: latest
+      install_recommends: yes
+     become: yes
+     ignore_errors: true
+
+   - name: Install pip
+     apt:
+      name: python-pip
+      update_cache: yes
+      state: latest
+      install_recommends: yes
+     become: yes
+     ignore_errors: true
+
+
+   - name: Install git
+     become: yes
+     apt: pkg=git state=present update_cache=yes cache_valid_time=20000
+
+   - name: Clone repo
+     git:
+      repo: https://{{githubToken}}@github.ncsu.edu/csc510-fall2019/CSC510-3.git
+      dest: /home/focusbot/
+      accept_hostkey: yes
+      force: yes
+  
+
+
+   - name: Install pip packages
+     become: yes
+     shell: pip install --no-cache-dir -r /home/focusbot/requirements.txt
+     ignore_errors: true
+
+
+   - name: Install Postgres
+     become: yes
+     apt: 
+       name: ['python-psycopg2', 'postgresql', 'postgresql-client', 'postgresql-client-common', 'libpq-dev', 'python-tk']  
+       update_cache: yes 
+       cache_valid_time: 3600 
+       state: latest
+
+   - name: Create focusbot database
+     become: yes
+     become_user: postgres
+     postgresql_db: name=focusbotDB encoding='UTF-8' lc_collate='en_US.UTF-8' lc_ctype='en_US.UTF-8' state=present
+
+
+   - name: Create focusbot user
+     become: yes
+     become_user: postgres
+     postgresql_user:
+       name: "{{dbUser}}"
+       password: "{{dbPass}}"
+
+   - name: Ensure we have access from the new user
+     become: yes
+     become_user: postgres
+     postgresql_privs:
+       db: focusbotDB
+       role: "{{dbUser}}"
+       objs: ALL_IN_SCHEMA
+       privs: SELECT,INSERT,UPDATE,DELETE
+
+   - name: Start the Postgresql service
+     become: yes
+     service:
+       name: postgresql
+       state: started
+       enabled: true
+
+   - name: Run table creation
+     shell: python /home/focusbot/tables.py
+
+   - name: "Check if any python apps are running"
+     become: yes
+     command: forever list
+     register: runningApps
+  
+  
+   - name: Start forever app.py
+     shell: forever start -c python /home/focusbot/Milestone-2/app.py /home/focusbot/Milestone-2/configs.json
+     become: yes
+     when: "runningApps.stdout.find('/home/focusbot/Milestone-2/app.py') == -1"  
+
+   - name: Start forever rtm.py
+     shell: forever start -c python /home/focusbot/Milestone-2/rtm.py /home/focusbot/Milestone-2/configs.json
+     become: yes
+     when: "runningApps.stdout.find('/home/focusbot/Milestone-2/rtm.py') == -1"  
+

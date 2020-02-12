@@ -1,0 +1,6 @@
+---
+githubToken : {{github token}}
+dbUser : {{username}}
+dbPass : {{password}}
+
+#The dbUser and dbPass should be in sync with the configs.json username and password. 
