@@ -1,0 +1,8 @@
+{
+  "slack_bot_token":"xoxb-xxxxxxxxxxxxx",
+  "slack_signing_secret":"xxxxxxxx",
+  "userId":"xxxxxx",
+  "userToken":"xxxxx",
+  "serverEndPoint": "xxxxxx",
+  "focusBot":"xxxxxxx"
+}

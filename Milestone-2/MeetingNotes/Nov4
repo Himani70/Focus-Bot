@@ -1,0 +1,7 @@
+Agenda :
+	Database schema changes, pomodoro logic, interactivity
+
+- We are making the pomodoro task asynchronous and adding interactive blocks using Block Kit for updating task completion percentages
+- Adding new web hooks for collecting interactivity events
+- DB schema modified to account the dynamic start time of 1st session everyday for each user
+

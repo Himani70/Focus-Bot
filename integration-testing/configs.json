@@ -1,0 +1,9 @@
+{
+  "slack_url" : "xxxxxxx",
+  "login_email_positive" : "xxxxxx",
+  "login_password_positive" : "xxxxx",
+  "login_email_negative" : "xxxxxx",
+  "login_password_negative" : "xxxxxx",
+  "dm_channel_positive" : "xxxxxxxx",
+  "dm_channel_negative" : "xxxxxx"
+}

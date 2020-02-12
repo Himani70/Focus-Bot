@@ -1,0 +1,12 @@
+{
+  "slack_bot_token":"xoxb-792834100421-803926781638-6tFjHdoCDPzYBr4OFMug7qCW",
+  "slack_signing_secret":"cccce5d92d9b580ef65d84dd968c3088",
+  "userId":"jcheruk@ncsu.edu",
+  "userToken":"NlVW7BXchvw2x0gn2SlQC60E",
+  "serverEndPoint": "https://focus-bot.atlassian.net",
+  "focusBot":"@UPMT8NZJS",
+  "host":"localhost",
+  "database":"focusbotDB",
+  "user":"focusbot",
+  "password":"focusbot"
+}

@@ -1,0 +1,5 @@
+Agenda :
+	Refining Pomodoro use case, integrating graph generation with the main code
+
+Refined the pomodoro use to handle few more cases
+Integrated graph generation with the main code and tested if it was working good

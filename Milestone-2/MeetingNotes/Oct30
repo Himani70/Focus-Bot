@@ -1,0 +1,10 @@
+Agenda :
+	Discuss on implementing Pomodoro logic
+
+- User tells task id, session time, short break time, long break time, number of sessions.
+- Incorporate checks to see if the entire pomodoro workflow does not exceed 8 session hours.
+- For every session, user is expected to complete 0.5 points (20 points per week, 4 points a day => 0.5 points in a session)
+- At the end of each pmodoro session, gather the percentage completed and update the remaining points on Jira.
+- Also find the percentage of points earned out of 0.5 on every session and log it on local database. (if x points earned at Session S3, database table will have (x/0.5)*100 corresponding to that user and under S3 )
+- Once, 100% task has been completed close it on Jira
+

@@ -1,0 +1,83 @@
+
+POSTGRESQL
+==========
+
+DB Setup:
+----------
+
+CREATE DATABASE focusbot;
+CREATE USER team3 WITH PASSWORD {pass};
+GRANT ALL PRIVILEGES ON DATABASE focusbot TO team3;
+
+
+SCHEMA:
+-------
+CREATE TABLE USERMAPPING(slackId VARCHAR(50) PRIMARY KEY, jiraId VARCHAR(50) UNIQUE NOT NULL);
+
+CREATE TABLE FOCUSSESSION
+      (
+               userid VARCHAR(50) NOT NULL,
+               weekid smallint NOT NULL,
+               Session1 NUMERIC,
+               Session2 NUMERIC,
+               Session3 NUMERIC,
+               Session4 NUMERIC,
+               Session5 NUMERIC,
+               Session6 NUMERIC,
+               Session7 NUMERIC,
+               Session8 NUMERIC,
+               Session9 NUMERIC,
+               Session10 NUMERIC,
+               Session11 NUMERIC,
+               Session12 NUMERIC,
+               Session13 NUMERIC,
+               Session14 NUMERIC,
+               Session15 NUMERIC,
+               Session16 NUMERIC,
+               Session17 NUMERIC,
+               Session18 NUMERIC,
+               Session19 NUMERIC,
+               Session20 NUMERIC,
+               Session21 NUMERIC,
+               Session22 NUMERIC,
+               Session23 NUMERIC,
+               Session24 NUMERIC,
+               Session25 NUMERIC,
+               Session26 NUMERIC,
+               Session27 NUMERIC,
+               Session28 NUMERIC,
+               Session29 NUMERIC,
+               Session30 NUMERIC,
+               Session31 NUMERIC,
+               Session32 NUMERIC,
+               Session33 NUMERIC,
+               Session34 NUMERIC,
+               Session35 NUMERIC,
+               Session36 NUMERIC,
+               Session37 NUMERIC,
+               Session38 NUMERIC,
+               Session39 NUMERIC,
+               Session40 NUMERIC,
+               PRIMARY KEY(UserId, WeekId)
+);
+
+CREATE TABLE USERMETADATA(userid VARCHAR(50) PRIMARY KEY, 
+"0" bigint ,
+"1" bigint ,
+"2" bigint ,
+"3" bigint ,
+"4" bigint ,
+activeTask VARCHAR(50) );
+
+
+0,1,2,3,4 - Mon, Tue, Wed, Thurs, Friday
+
+WeekId - 1 to 53
+Session{Id} - float values containing percentage of work done or points completed
+UserId, SlackId - string
+
+Can be extended by adding a year field.
+
+We have decided on two tables. 
+
+Using Postgres version 11.5

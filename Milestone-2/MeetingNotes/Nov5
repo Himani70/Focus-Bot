@@ -1,0 +1,7 @@
+Agenda :
+	Metadata table, stop task on a pomodoro, assumptions
+
+- We are having a metadata table to store the session starting time for every user on every day.
+- Decided to have capability to stop a task once pomodoro is started
+- Had a brief discussion on possible assumptions that we need to state. Need to brainstorm more on this in upcoming meetings
+

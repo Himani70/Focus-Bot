@@ -1,0 +1,9 @@
+Agenda :
+	Discuss on finished issues 
+	Decide on Database structure
+
+Jira table for completion percentage
+Table structure for storing userID, weekID, S1 - S40
+
+We are fixing 8 hours of work per day and allowing 8 sessions at max to offer
+For heat map productivity, the task points are taken from this table to calculate and show the color range. 
