@@ -1,4 +1,4 @@
-Flask==1.1.1
+Flask==2.3.2
 config==0.4.2
 requests==2.22.0
 requests-oauthlib==1.2.0
