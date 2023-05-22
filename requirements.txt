@@ -1,6 +1,6 @@
 Flask==1.1.1
 config==0.4.2
-requests==2.22.0
+requests==2.31.0
 requests-oauthlib==1.2.0
 requests-toolbelt==0.9.1
 psycopg2-binary==2.8.4
